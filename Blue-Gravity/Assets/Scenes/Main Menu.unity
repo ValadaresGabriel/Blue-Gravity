@@ -543,6 +543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 614919615}
+  - component: {fileID: 614919616}
   m_Layer: 0
   m_Name: Main Menu
   m_TagString: Untagged
@@ -566,6 +567,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614919616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614919614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f463503708f21c45b36e138fddf130f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameScene:
+    m_SceneAsset: {fileID: 102900000, guid: 3c1141d8ef204b14395006de64b8bdd9, type: 3}
+    m_SceneName: Game
+  mainGameObject: {fileID: 981453765}
+  audioGameObject: {fileID: 1005643004}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +848,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981453766}
     m_Modifications:
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 614919616}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClothGravity.MainMenu.MainMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8003943862434433162, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -936,6 +970,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1005643005}
     m_Modifications:
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 614919616}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AudioDone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClothGravity.MainMenu.MainMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8003943862434433162, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1893,6 +1943,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981453766}
     m_Modifications:
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 614919616}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClothGravity.MainMenu.MainMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8003943862434433162, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2165,6 +2231,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981453766}
     m_Modifications:
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 614919616}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClothGravity.MainMenu.MainMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003943862434433161, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8003943862434433162, guid: 3ce2fa987afd81e42bb47954eedb50ab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

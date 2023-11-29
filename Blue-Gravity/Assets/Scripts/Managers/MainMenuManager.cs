@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +7,13 @@ namespace ClothGravity.MainMenu
 {
     public class MainMenuManager : MonoBehaviour
     {
+        [SerializeField] SceneField gameScene;
         [SerializeField] GameObject mainGameObject;
         [SerializeField] GameObject audioGameObject;
 
         public void Play()
         {
-
+            SceneManager.LoadScene(gameScene);
         }
 
         public void Audio()
