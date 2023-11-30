@@ -13,6 +13,7 @@ namespace ClothGravity.Shop
         [SerializeField] GameObject shopGameObject;
         [SerializeField] Transform itemsGroupTransform;
         [SerializeField] GameObject shopSlotPrefab;
+        [SerializeField] ScrollManager scrollManager;
 
         private List<ItemSlot> itemSlots = new();
 
@@ -26,14 +27,18 @@ namespace ClothGravity.Shop
 
         public void OpenShop(List<Item> items)
         {
+            shopGameObject.SetActive(true);
+
             foreach (Item item in items)
             {
-                GameObject itemSlotInstance = Instantiate(shopSlotPrefab, itemsGroupTransform);
-                ItemSlot itemSlot = itemSlotInstance.GetComponent<ItemSlot>();
+                GameObject shopSlotInstance = Instantiate(shopSlotPrefab, itemsGroupTransform);
+                ItemSlot itemSlot = shopSlotInstance.GetComponent<ItemSlot>();
 
                 itemSlot.item = item;
                 itemSlot.SetItemIcon();
             }
+
+            scrollManager.RefreshScroll();
         }
     }
 }
