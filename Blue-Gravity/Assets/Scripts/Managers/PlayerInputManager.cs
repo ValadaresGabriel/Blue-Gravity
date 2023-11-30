@@ -12,6 +12,7 @@ namespace ClothGravity
         public Vector2 MovementValue;
         public event Action MouseLeftButtonEvent;
         public event Action MouseRightButtonEvent;
+        public event Action OpenInventoryEvent;
 
         private void Awake()
         {
@@ -44,6 +45,14 @@ namespace ClothGravity
             if (context.performed)
             {
                 MouseRightButtonEvent?.Invoke();
+            }
+        }
+
+        public void OnOpenInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OpenInventoryEvent?.Invoke();
             }
         }
     }

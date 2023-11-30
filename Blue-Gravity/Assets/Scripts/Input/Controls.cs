@@ -53,6 +53,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Open Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""916b891b-1995-4423-9405-85918a7f4508"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Mouse Left Button"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e38a5fb-63de-4817-9ffa-2b7ecfcae21c"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -171,6 +191,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PlayerActions_Movement = m_PlayerActions.FindAction("Movement", throwIfNotFound: true);
         m_PlayerActions_MouseLeftButton = m_PlayerActions.FindAction("Mouse Left Button", throwIfNotFound: true);
         m_PlayerActions_MouseRightButton = m_PlayerActions.FindAction("Mouse Right Button", throwIfNotFound: true);
+        m_PlayerActions_OpenInventory = m_PlayerActions.FindAction("Open Inventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -238,6 +259,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Movement;
     private readonly InputAction m_PlayerActions_MouseLeftButton;
     private readonly InputAction m_PlayerActions_MouseRightButton;
+    private readonly InputAction m_PlayerActions_OpenInventory;
     public struct PlayerActionsActions
     {
         private @Controls m_Wrapper;
@@ -245,6 +267,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerActions_Movement;
         public InputAction @MouseLeftButton => m_Wrapper.m_PlayerActions_MouseLeftButton;
         public InputAction @MouseRightButton => m_Wrapper.m_PlayerActions_MouseRightButton;
+        public InputAction @OpenInventory => m_Wrapper.m_PlayerActions_OpenInventory;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -263,6 +286,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MouseRightButton.started += instance.OnMouseRightButton;
             @MouseRightButton.performed += instance.OnMouseRightButton;
             @MouseRightButton.canceled += instance.OnMouseRightButton;
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -276,6 +302,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MouseRightButton.started -= instance.OnMouseRightButton;
             @MouseRightButton.performed -= instance.OnMouseRightButton;
             @MouseRightButton.canceled -= instance.OnMouseRightButton;
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -344,6 +373,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnMouseLeftButton(InputAction.CallbackContext context);
         void OnMouseRightButton(InputAction.CallbackContext context);
+        void OnOpenInventory(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ClothGravity.UI
@@ -15,9 +13,10 @@ namespace ClothGravity.UI
             Instance = this;
         }
 
-        public static void ShowTooltip()
+        public static void ShowTooltip(string title, string description, string price)
         {
             Instance.tooltip.gameObject.SetActive(true);
+            Instance.tooltip.SetTitleAndDescriptionText(title, description, price);
         }
 
         public static void HideTooltip()

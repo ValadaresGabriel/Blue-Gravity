@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ClothGravity.Item
+namespace ClothGravity.Items
 {
     public class Item : ScriptableObject
     {

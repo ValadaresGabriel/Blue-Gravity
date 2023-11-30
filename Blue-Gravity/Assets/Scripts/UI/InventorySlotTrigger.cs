@@ -5,11 +5,41 @@ using UnityEngine.EventSystems;
 
 namespace ClothGravity.UI
 {
-    public class InventorySlotTrigger : MonoBehaviour, IPointerClickHandler
+    public class InventorySlotTrigger : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
     {
-        public void OnPointerClick(PointerEventData eventData)
+        [SerializeField] Canvas canvas;
+        private RectTransform rectTransform;
+        private CanvasGroup canvasGroup;
+
+        private void Awake()
+        {
+            rectTransform = GetComponentInChildren<RectTransform>();
+            canvasGroup = GetComponentInChildren<CanvasGroup>();
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
         {
             //
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            //
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            //
+        }
+
+        public void OnDrop(PointerEventData eventData)
+        {
+            Debug.Log("Drop");
         }
     }
 }

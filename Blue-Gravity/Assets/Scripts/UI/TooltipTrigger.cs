@@ -10,7 +10,19 @@ namespace ClothGravity.UI
         public void OnPointerEnter(PointerEventData eventData)
         {
             GameObject hoveredGameObject = eventData.pointerEnter;
-            TooltipManager.ShowTooltip();
+
+            if (hoveredGameObject != null)
+            {
+                // The use of Interface fits perfectly for Tooltip system, since a lot of things in the game CAN use it, not only items.
+                if (TryGetComponent(out ITooltip tooltipComponent))
+                {
+                    string tooltipTitle = tooltipComponent.GetTooltipTitle();
+                    string tooltipDescription = tooltipComponent.GetTooltipDescription();
+                    string tooltipPrice = tooltipComponent.GetTooltipPrice();
+
+                    TooltipManager.ShowTooltip(tooltipTitle, tooltipDescription, tooltipPrice);
+                }
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)

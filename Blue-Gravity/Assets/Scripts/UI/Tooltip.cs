@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UIElements;
+using ClothGravity.Items;
 
 namespace ClothGravity.UI
 {
@@ -12,6 +13,7 @@ namespace ClothGravity.UI
     {
         [SerializeField] TextMeshProUGUI titleText;
         [SerializeField] TextMeshProUGUI descriptionText;
+        [SerializeField] TextMeshProUGUI priceText;
         [SerializeField] LayoutElement layoutElement;
         [SerializeField] int descriptionCharacterWrapLimit;
         [SerializeField] RectTransform rectTransform;
@@ -58,9 +60,20 @@ namespace ClothGravity.UI
             transform.position = mousePosition;
         }
 
-        public void SetTitleAndDescriptionText()
+        public void SetTitleAndDescriptionText(string title, string description, string price)
         {
-            //
+            titleText.SetText(title);
+            descriptionText.SetText(description);
+
+            if (string.IsNullOrEmpty(price))
+            {
+                priceText.gameObject.SetActive(false);
+            }
+            else
+            {
+                priceText.gameObject.SetActive(true);
+                priceText.SetText(price);
+            }
         }
 
         private bool NeedsToBeWrapped()
