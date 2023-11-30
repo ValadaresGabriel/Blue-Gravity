@@ -14,6 +14,8 @@ namespace ClothGravity
         public event Action MouseRightButtonEvent;
         public event Action OpenInventoryEvent;
 
+        private Controls playerControls;
+
         private void Awake()
         {
             if (Instance == null)
@@ -25,6 +27,14 @@ namespace ClothGravity
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void Start()
+        {
+            playerControls = new Controls();
+            playerControls.PlayerActions.SetCallbacks(this);
+
+            playerControls.Enable();
         }
 
         public void OnMovement(UnityEngine.InputSystem.InputAction.CallbackContext context)
