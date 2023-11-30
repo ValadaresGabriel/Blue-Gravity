@@ -41,9 +41,9 @@ namespace ClothGravity.Inventory
             }
         }
 
-        public void AddItemToItemSlot(Item item)
+        public static void AddItemToItemSlot(Item item)
         {
-            foreach (ItemSlot itemSlot in itemSlots)
+            foreach (ItemSlot itemSlot in Instance.itemSlots)
             {
                 if (itemSlot.item == null)
                 {
