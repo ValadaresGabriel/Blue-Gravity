@@ -9,6 +9,7 @@ namespace ClothGravity.UI
     {
         public void OnPointerEnter(PointerEventData eventData)
         {
+            GameObject hoveredGameObject = eventData.pointerEnter;
             TooltipManager.ShowTooltip();
         }
 

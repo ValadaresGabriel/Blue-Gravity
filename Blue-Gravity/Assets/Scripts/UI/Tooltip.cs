@@ -31,11 +31,36 @@ namespace ClothGravity.UI
         {
             Vector2 mousePosition = MouseManager.MousePosition;
 
+            // Calculating the horizontal/vertical proportion of the pivot point
+            // in relation to the screen width/height
             float pivotX = mousePosition.x / Screen.width;
             float pivotY = mousePosition.y / Screen.height;
 
+            if (pivotX >= 0.75)
+            {
+                pivotX = 1;
+            }
+            else
+            {
+                pivotX = 0;
+            }
+
+            if (pivotY >= .4f)
+            {
+                pivotY = 1;
+            }
+            else
+            {
+                pivotY = 0;
+            }
+
             rectTransform.pivot = new Vector2(pivotX, pivotY);
             transform.position = mousePosition;
+        }
+
+        public void SetTitleAndDescriptionText()
+        {
+            //
         }
 
         private bool NeedsToBeWrapped()
