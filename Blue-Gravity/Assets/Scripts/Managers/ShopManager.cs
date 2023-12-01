@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ClothGravity.Inventory;
 using ClothGravity.Items;
 using ClothGravity.UI;
 using UnityEngine;
@@ -43,11 +44,14 @@ namespace ClothGravity.ShopSystem
             }
 
             scrollManager.RefreshScroll();
+
+            InventoryManager.OpenInventoryWithShop();
         }
 
         public void AttemptToCloseShop()
         {
             UIManager.CloseShop();
+            InventoryManager.CloseInventoryWithShop();
         }
 
         public void CloseShop()

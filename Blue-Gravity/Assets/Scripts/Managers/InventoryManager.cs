@@ -60,16 +60,37 @@ namespace ClothGravity.Inventory
             }
         }
 
-        public void OpenInventoryWithShop()
+        public static void AttemptToSellItem(ItemSlot itemSlot)
         {
-            OpenInventory();
-            inventoryGameObject.transform.position = new Vector3(inventoryGameObject.transform.position.x, -213, inventoryGameObject.transform.position.z);
+            Item itemToSell = itemSlot.Item;
+
+            if (itemSlot.IsEquipped)
+            {
+                itemSlot.IsEquipped = false;
+            }
+
+            itemSlot.RemoveItem();
+            PlayerManager.Instance.playerCurrency.Currency += itemToSell.itemPrice;
         }
 
-        public void CloseInventoryWithShop()
+        public static void OpenInventoryWithShop()
         {
-            CloseInventory();
-            inventoryGameObject.transform.position = originalPosition;
+            Instance.inventoryGameObject.SetActive(true);
+
+            foreach (ItemSlot itemSlot in Instance.itemSlots)
+            {
+                if (itemSlot.Item == null) continue;
+
+                itemSlot.SetItemIcon();
+            }
+
+            Instance.inventoryGameObject.transform.localPosition = new Vector3(Instance.inventoryGameObject.transform.localPosition.x, -99, Instance.inventoryGameObject.transform.localPosition.z);
+        }
+
+        public static void CloseInventoryWithShop()
+        {
+            Instance.CloseInventory();
+            Instance.inventoryGameObject.transform.position = Instance.originalPosition;
         }
 
         public void CloseInventory()
@@ -127,6 +148,7 @@ namespace ClothGravity.Inventory
 
                     equippedItemSlot.Item = itemSlot.Item;
                     equippedItemSlot.SetItemIcon();
+                    equippedItemSlot.IsEquipped = true;
                     itemSlot.RemoveItem();
                     break;
                 }
@@ -159,7 +181,7 @@ namespace ClothGravity.Inventory
             return true;
         }
 
-        private static bool UnequipItem(ItemType itemType)
+        public static bool UnequipItem(ItemType itemType)
         {
             // Check if there is free item slots
             if (!IsThereFreeItemSlots())
@@ -178,10 +200,13 @@ namespace ClothGravity.Inventory
 
                     equippedItemSlot.Item = null;
                     equippedItemSlot.RemoveItem();
+                    equippedItemSlot.IsEquipped = false;
                     AddItemToItemSlot(item);
                     break;
                 }
             }
+
+            PlayerManager.Instance.playerEquipItem.UnequipItem(itemType);
 
             return true;
         }

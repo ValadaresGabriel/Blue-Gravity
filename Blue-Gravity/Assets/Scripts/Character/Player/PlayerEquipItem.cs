@@ -45,5 +45,27 @@ namespace ClothGravity.Character
                     break;
             }
         }
+
+        public void UnequipItem(ItemType itemType)
+        {
+            switch (itemType)
+            {
+                case ItemType.Clothing:
+                    clothingSpriteRenderer.sprite = null;
+                    clothingRuntimeAnimator.runtimeAnimatorController = null;
+                    isClothingEquipped = false;
+                    break;
+                case ItemType.Hair:
+                    hairSpriteRenderer.sprite = null;
+                    hairRuntimeAnimator.runtimeAnimatorController = null;
+                    isHairEquipped = false;
+                    break;
+                case ItemType.Hat:
+                    hatSpriteRenderer.sprite = null;
+                    hatRuntimeAnimator.runtimeAnimatorController = null;
+                    isHatEquipped = false;
+                    break;
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ClothGravity.UI;
 using UnityEngine;
 
 namespace ClothGravity.Character
@@ -8,11 +9,20 @@ namespace ClothGravity.Character
     {
         [SerializeField] int currency = 100;
 
+        private void Start()
+        {
+            PlayerUIManager.SetCurrency(currency);
+        }
+
         public int Currency
         {
             get => currency;
 
-            set => currency = value;
+            set
+            {
+                currency = value;
+                PlayerUIManager.SetCurrency(currency);
+            }
         }
     }
 }

@@ -36,11 +36,20 @@ namespace ClothGravity.UI
                     if (PlayerManager.Instance.IsOnShop)
                     {
                         Debug.Log("Sell Item!");
+                        InventoryManager.AttemptToSellItem(eventData.pointerPress.GetComponent<ItemSlot>());
                     }
                     else if (PlayerManager.Instance.IsOnInventory)
                     {
-                        Debug.Log("Equip Item!");
-                        InventoryManager.EquipItem(eventData.pointerPress.GetComponent<ItemSlot>());
+                        ItemSlot itemSlot = eventData.pointerPress.GetComponent<ItemSlot>();
+
+                        if (itemSlot.IsEquipped)
+                        {
+                            // Unequip
+                            InventoryManager.UnequipItem(itemSlot.Item.itemType);
+                            return;
+                        }
+
+                        InventoryManager.EquipItem(itemSlot);
                     }
                 }
             }
