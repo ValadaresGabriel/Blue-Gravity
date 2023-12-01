@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using ClothGravity.Shopping;
+using ClothGravity.Character.DialogSystem;
+using ClothGravity.ShopSystem;
 using UnityEngine;
 
 namespace ClothGravity.Character
@@ -9,6 +10,8 @@ namespace ClothGravity.Character
     public class NPC : ScriptableObject
     {
         public string npcName;
+        public bool hasShop;
         public Shop npcShop;
+        public Dialog dialog;
     }
 }

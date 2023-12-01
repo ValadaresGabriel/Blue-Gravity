@@ -19,7 +19,10 @@ namespace ClothGravity.Character
     public class CharacterAnimatorManager : MonoBehaviour
     {
         private CharacterAnimation characterAnimation;
-        private Animator animator;
+        [SerializeField] Animator characterAnimator;
+        [SerializeField] Animator clothingAnimator;
+        [SerializeField] Animator hairAnimator;
+        [SerializeField] Animator hatAnimator;
         private Dictionary<CharacterAnimation, string> animations = new()
         {
             { CharacterAnimation.Idle_Up, "Idle_Up" },
@@ -32,18 +35,27 @@ namespace ClothGravity.Character
             { CharacterAnimation.Walk_Right, "Walk_Right" },
         };
 
-        private void Awake()
-        {
-            animator = GetComponent<Animator>();
-        }
-
         public void ChangeCharacterAnimation(CharacterAnimation newAnimation)
         {
             if (newAnimation == characterAnimation) return;
 
             characterAnimation = newAnimation;
 
-            animator.Play(animations[newAnimation]);
+            characterAnimator.Play(animations[newAnimation]);
+
+            ChangeItemsAnimation(animations[newAnimation]);
+        }
+
+        public void ChangeItemsAnimation(string animation)
+        {
+            if (clothingAnimator.runtimeAnimatorController != null)
+                clothingAnimator.Play(animation);
+
+            if (hairAnimator.runtimeAnimatorController != null)
+                hairAnimator.Play(animation);
+
+            if (hatAnimator.runtimeAnimatorController != null)
+                hatAnimator.Play(animation);
         }
     }
 }

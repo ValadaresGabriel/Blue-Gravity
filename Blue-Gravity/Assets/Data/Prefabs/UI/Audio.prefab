@@ -63,6 +63,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -380
       objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 3182297394034470798, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -232,6 +244,18 @@ PrefabInstance:
     - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
       propertyPath: m_text
       value: Effects Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 3182297394034470798, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -528,6 +552,18 @@ PrefabInstance:
     - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
       propertyPath: m_text
       value: Music Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182297393927062849, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 3182297394034470798, guid: 77b5edbb7f3ad9d44915892899a5338e, type: 3}
       propertyPath: m_AnchorMax.x

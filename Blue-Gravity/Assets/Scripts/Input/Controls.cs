@@ -160,9 +160,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""id"": ""aa2fd8e9-3054-4211-88e9-558fa677ac73"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Next Dialog"",
                     ""type"": ""Button"",
-                    ""id"": ""10473a00-19d6-415d-9044-6f321d671af9"",
+                    ""id"": ""c9abe3ec-b093-486f-8879-7a18d14a81f5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -172,12 +172,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""52289010-3db7-4c31-ba72-13ac9cf6f781"",
-                    ""path"": """",
+                    ""id"": ""0261d985-56aa-478e-8ab8-adc9263e4bd7"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Next Dialog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -194,7 +194,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PlayerActions_OpenInventory = m_PlayerActions.FindAction("Open Inventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        m_UI_NextDialog = m_UI.FindAction("Next Dialog", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,12 +326,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_Newaction;
+    private readonly InputAction m_UI_NextDialog;
     public struct UIActions
     {
         private @Controls m_Wrapper;
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
+        public InputAction @NextDialog => m_Wrapper.m_UI_NextDialog;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,16 +341,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @NextDialog.started += instance.OnNextDialog;
+            @NextDialog.performed += instance.OnNextDialog;
+            @NextDialog.canceled += instance.OnNextDialog;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @NextDialog.started -= instance.OnNextDialog;
+            @NextDialog.performed -= instance.OnNextDialog;
+            @NextDialog.canceled -= instance.OnNextDialog;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -377,6 +377,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     }
     public interface IUIActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnNextDialog(InputAction.CallbackContext context);
     }
 }

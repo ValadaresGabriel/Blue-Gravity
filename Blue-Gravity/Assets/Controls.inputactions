@@ -138,9 +138,9 @@
             "id": "aa2fd8e9-3054-4211-88e9-558fa677ac73",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Next Dialog",
                     "type": "Button",
-                    "id": "10473a00-19d6-415d-9044-6f321d671af9",
+                    "id": "c9abe3ec-b093-486f-8879-7a18d14a81f5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -150,12 +150,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "52289010-3db7-4c31-ba72-13ac9cf6f781",
-                    "path": "",
+                    "id": "0261d985-56aa-478e-8ab8-adc9263e4bd7",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Next Dialog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

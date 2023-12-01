@@ -55,6 +55,12 @@ namespace ClothGravity.Inventory
             }
         }
 
+        public void CloseInventory()
+        {
+            PlayerManager.Instance.IsOnInventory = false;
+            inventoryGameObject.SetActive(false);
+        }
+
         public static void AddItemToItemSlot(Item item)
         {
             foreach (ItemSlot itemSlot in Instance.itemSlots)

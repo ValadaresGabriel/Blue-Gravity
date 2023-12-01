@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using ClothGravity.Character.Dialog;
+using ClothGravity.Character.DialogSystem;
 using UnityEngine;
 using TMPro;
+using ClothGravity.Character;
+using ClothGravity.Audio;
 
 namespace ClothGravity.UI
 {
@@ -12,19 +14,105 @@ namespace ClothGravity.UI
         [SerializeField] TextMeshProUGUI ownerText;
         [SerializeField] TextMeshProUGUI messageText;
         [SerializeField] float letterDelayTime = 0.01f;
+        [SerializeField] AudioClip[] dialogTypeSFX;
+        private int dialogIndex = 0;
+        private bool isTypingMessage = false;
+        private NPC currentNPC;
+        private Coroutine typeMessageCoroutine;
+        private List<DialogMessage> dialogMessage = new();
 
-        public void InitializeDialog(Dialog dialog)
+        public void OpenDialog(NPC npc)
         {
+            PlayerInputManager.Instance.NextDialogEvent += NextDialog;
+
+            currentNPC = npc;
+
             dialogGameObject.SetActive(true);
+            ConfigureDialog();
+        }
+
+        public void CloseDialog()
+        {
+            PlayerInputManager.Instance.NextDialogEvent -= NextDialog;
+
+            dialogGameObject.SetActive(false);
+            currentNPC = null;
+            dialogIndex = 0;
+            StopCoroutine(typeMessageCoroutine);
+        }
+
+        private void ConfigureDialog()
+        {
+            if (PlayerManager.Instance != null)
+            {
+                PlayerManager.Instance.IsOnShop = true;
+            }
+            else
+            {
+                Debug.LogError("Player Manager is Null!");
+                return;
+            }
+
+            if (currentNPC.dialog.hasMet)
+            {
+                // Has met dialog
+                dialogMessage = currentNPC.dialog.metDialogMessages;
+                NextDialog();
+                return;
+            }
+
+            dialogMessage = currentNPC.dialog.initialDialogMessages;
+
+            // Changing directly the ScriptableObject, not an instance of it. It shouldn't be a problem in this project
+            currentNPC.dialog.hasMet = true;
+
+            NextDialog();
+        }
+
+        private void NextDialog()
+        {
+            if (dialogIndex >= dialogMessage.Count)
+            {
+                FinalizeDialog();
+                return;
+            }
+
+            if (isTypingMessage)
+            {
+                StopCoroutine(typeMessageCoroutine);
+                messageText.SetText(dialogMessage[dialogIndex - 1].message);
+                return;
+            }
+
+            messageText.SetText("");
+            typeMessageCoroutine = StartCoroutine(TypeMessage(dialogMessage[dialogIndex++].message));
+        }
+
+        private void FinalizeDialog()
+        {
+            CloseDialog();
+
+            if (currentNPC.hasShop)
+            {
+                UIManager.Interact(Interaction.Shop, items: currentNPC.npcShop.itemsToSell);
+            }
         }
 
         private IEnumerator TypeMessage(string message)
         {
+            isTypingMessage = true;
+
             foreach (char letter in message.ToCharArray())
             {
+                AudioClip selectedDialogSFX = dialogTypeSFX[Random.Range(0, dialogTypeSFX.Length)];
+
+                AudioManager.Instance.PlayEffectsAudio(selectedDialogSFX);
+
                 messageText.SetText(messageText.text + letter);
                 yield return new WaitForSeconds(letterDelayTime);
             }
+
+            isTypingMessage = false;
         }
     }
 }

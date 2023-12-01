@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce04af43a47b4a43a11611f9af54d6f, type: 3}
   m_Name: Chloe Shop
   m_EditorClassIdentifier: 
-  itemsToSell: []
+  itemsToSell:
+  - {fileID: 11400000, guid: a7d7005388c65aa498edb6612efd0c55, type: 2}
+  - {fileID: 11400000, guid: b642d44691821a74fa8470d3af728bd6, type: 2}

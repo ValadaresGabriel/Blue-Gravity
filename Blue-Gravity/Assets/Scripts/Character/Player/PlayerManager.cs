@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ClothGravity.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ClothGravity.Character
 {
@@ -11,6 +12,7 @@ namespace ClothGravity.Character
 
         private bool isOnShop;
         private bool isOnInventory;
+        private bool isInteracting = false;
 
         private void Awake()
         {
@@ -22,9 +24,27 @@ namespace ClothGravity.Character
             PlayerInputManager.Instance.OpenInventoryEvent += OpenInventory;
         }
 
+        public void EnableUIActions()
+        {
+            PlayerInputManager.Instance.EnableUIActions();
+        }
+
+        public void EnablePlayerActions()
+        {
+            PlayerInputManager.Instance.EnablePlayerActions();
+        }
+
         private void OpenInventory()
         {
-            UIManager.OpenInventory();
+            if (!IsOnShop)
+            {
+                IsInteracting = true;
+                UIManager.OpenInventory();
+                return;
+            }
+
+            UIManager.CloseInventory();
+            IsInteracting = false;
         }
 
         private void OnDestroy()
@@ -42,6 +62,12 @@ namespace ClothGravity.Character
         {
             get => isOnInventory;
             set => isOnInventory = value;
+        }
+
+        public bool IsInteracting
+        {
+            get => isInteracting;
+            set => isInteracting = value;
         }
     }
 }

@@ -4,7 +4,7 @@ using ClothGravity.Items;
 using ClothGravity.UI;
 using UnityEngine;
 
-namespace ClothGravity.Shopping
+namespace ClothGravity.ShopSystem
 {
     public class ShopManager : MonoBehaviour
     {

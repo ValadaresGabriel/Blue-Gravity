@@ -2313,7 +2313,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 642484149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616af423a858d794cbb288dfdd7aaf96, type: 3}
+  m_Script: {fileID: 11500000, guid: e32106265e829d64082717f12cc82fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &686748897
@@ -3051,6 +3051,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921d081d5c709dd40ac07b36ce3fd107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterAnimator: {fileID: 935623565}
+  clothingAnimator: {fileID: 1958617493}
+  hairAnimator: {fileID: 543061849}
+  hatAnimator: {fileID: 883916309}
 --- !u!70 &935623570
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5768,6 +5772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 1873344049}
+  dialog: {fileID: 0}
   shop: {fileID: 625638409}
 --- !u!1 &1678013780
 GameObject:

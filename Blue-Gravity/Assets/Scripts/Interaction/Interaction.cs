@@ -7,17 +7,14 @@ namespace ClothGravity
 {
     public class Interaction : MonoBehaviour, IPointerClickHandler
     {
-        private bool isInTheInteractionArea = false;
+        protected bool isInTheInteractionArea = false;
 
-        public void OnPointerClick(PointerEventData eventData)
+        public virtual void OnPointerClick(PointerEventData eventData)
         {
-            if (isInTheInteractionArea)
-            {
-                Debug.Log("Has Clicked on NPC!");
-            }
+            if (!isInTheInteractionArea) return;
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (other.transform.CompareTag("Player"))
             {
@@ -25,7 +22,7 @@ namespace ClothGravity
             }
         }
 
-        private void OnTriggerExit2D(Collider2D other)
+        protected virtual void OnTriggerExit2D(Collider2D other)
         {
             if (other.transform.CompareTag("Player"))
             {

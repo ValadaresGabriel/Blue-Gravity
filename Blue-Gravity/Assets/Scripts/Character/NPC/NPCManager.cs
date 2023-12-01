@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using ClothGravity.Shopping;
+using ClothGravity.ShopSystem;
 using UnityEngine;
 
 namespace ClothGravity.Character

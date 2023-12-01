@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ClothGravity.Character.Dialog
+namespace ClothGravity.Character.DialogSystem
 {
     [System.Serializable]
     public struct DialogMessage
