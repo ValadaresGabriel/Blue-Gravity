@@ -16,6 +16,10 @@ namespace ClothGravity.Audio
         [SerializeField] Slider effectsSlider;
         [SerializeField] Slider musicSlider;
 
+        [Header("Audio Sources")]
+        [SerializeField] AudioSource effectsAudioSource;
+        [SerializeField] AudioSource musicAudioSource;
+
         private const string MasterVolume = "Master Volume";
         private const string EffectsVolume = "Effects Volume";
         private const string MusicVolume = "Music Volume";
@@ -30,6 +34,18 @@ namespace ClothGravity.Audio
 
             music.audioMixer.GetFloat(MusicVolume, out float musicVolume);
             musicSlider.value = musicVolume;
+        }
+
+        public void PlayEffectsAudio(AudioClip audioClip)
+        {
+            effectsAudioSource.PlayOneShot(audioClip);
+        }
+
+        public void PlayMusicAudio(AudioClip audioClip)
+        {
+            musicAudioSource.clip = audioClip;
+            musicAudioSource.loop = true;
+            musicAudioSource.Play();
         }
 
         public void SetMasterVolume(float value)

@@ -13,6 +13,11 @@ namespace ClothGravity.UI
 
         public void SetItemIcon()
         {
+            if (!itemIcon.enabled)
+            {
+                itemIcon.enabled = true;
+            }
+
             itemIcon.sprite = item.itemIcon;
         }
 

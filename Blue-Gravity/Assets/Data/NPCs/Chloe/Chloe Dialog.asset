@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b27daea6e1e4b4bba4b2838f0f7409, type: 3}
   m_Name: Chloe Dialog
   m_EditorClassIdentifier: 
-  initialDialogMessages: []
-  metDialogMessages: []
+  initialDialogMessages:
+  - message: ' Ah, hello there! It''s not every day that I see a new face around
+      here! My name''s Chloe, the most spirited traveling mage you''ll ever meet.'
+  - message: I'm always out and about, gathering magical treasures and rare artifacts.
+      And guess what?
+  - message: I love sharing my findings! Take a look at what I've got for sale. Maybe
+      you'll find something that makes your eyes sparkle like stars?
+  metDialogMessages:
+  - message: Hey, look who's back! Always a pleasure to see a fellow traveler. So,
+      looking for more mysterious enchantments or magical potions?
+  - message: You know I've always got something new. Oh, and if you need any tips
+      or stories about the places I've been, just ask. I love sharing my adventures
+      just as much as I love hearing about others'!
   hasMet: 0
