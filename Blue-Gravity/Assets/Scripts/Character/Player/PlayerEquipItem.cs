@@ -51,18 +51,18 @@ namespace ClothGravity.Character
             switch (itemType)
             {
                 case ItemType.Clothing:
-                    clothingSpriteRenderer.sprite = null;
                     clothingRuntimeAnimator.runtimeAnimatorController = null;
+                    clothingSpriteRenderer.sprite = null;
                     isClothingEquipped = false;
                     break;
                 case ItemType.Hair:
-                    hairSpriteRenderer.sprite = null;
                     hairRuntimeAnimator.runtimeAnimatorController = null;
+                    hairSpriteRenderer.sprite = null;
                     isHairEquipped = false;
                     break;
                 case ItemType.Hat:
-                    hatSpriteRenderer.sprite = null;
                     hatRuntimeAnimator.runtimeAnimatorController = null;
+                    hatSpriteRenderer.sprite = null;
                     isHatEquipped = false;
                     break;
             }

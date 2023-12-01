@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using ClothGravity.Character;
 using ClothGravity.Items;
 using ClothGravity.UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ClothGravity.Inventory
