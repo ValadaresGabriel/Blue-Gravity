@@ -24,6 +24,8 @@ namespace ClothGravity.Character
         {
             base.OnPointerClick(eventData);
 
+            if (!isInTheInteractionArea) return;
+
             if (npc == null)
             {
                 Debug.LogError($"The NPC does not have a NPC in the NPC Manager! NPC GameObject: {gameObject.name}");
@@ -37,8 +39,6 @@ namespace ClothGravity.Character
             }
 
             UIManager.Interact(UI.Interaction.Dialog, npc: npc);
-
-            // UIManager.OpenShop(npc.npcShop.itemsToSell);
         }
     }
 }

@@ -36,7 +36,9 @@ namespace ClothGravity.Character
 
         private void OpenInventory()
         {
-            if (!IsOnShop)
+            if (IsInteracting && !isOnInventory) return;
+
+            if (!isOnInventory)
             {
                 IsInteracting = true;
                 UIManager.OpenInventory();

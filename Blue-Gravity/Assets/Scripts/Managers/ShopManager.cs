@@ -32,13 +32,31 @@ namespace ClothGravity.ShopSystem
             foreach (Item item in items)
             {
                 GameObject shopSlotInstance = Instantiate(shopSlotPrefab, itemsGroupTransform);
+                ShopSlot shopSlot = shopSlotInstance.GetComponent<ShopSlot>();
                 ItemSlot itemSlot = shopSlotInstance.GetComponent<ItemSlot>();
 
                 itemSlot.Item = item;
                 itemSlot.SetItemIcon();
+
+                shopSlot.SetTitleAndPriceText(itemSlot.Item.itemName, itemSlot.Item.itemPrice.ToString(), itemSlot.Item.itemPrice);
             }
 
             scrollManager.RefreshScroll();
+        }
+
+        public void AttemptToCloseShop()
+        {
+            UIManager.CloseShop();
+        }
+
+        public void CloseShop()
+        {
+            shopGameObject.SetActive(false);
+
+            foreach (Transform item in itemsGroupTransform)
+            {
+                Destroy(item.gameObject);
+            }
         }
     }
 }

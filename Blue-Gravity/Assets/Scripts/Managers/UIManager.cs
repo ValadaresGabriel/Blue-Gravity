@@ -64,6 +64,7 @@ namespace ClothGravity.UI
         public static void CloseInventory()
         {
             Instance.inventory.CloseInventory();
+            PlayerManager.Instance.IsInteracting = false;
         }
 
         public static void OpenDialog(NPC npc)
@@ -75,11 +76,18 @@ namespace ClothGravity.UI
         {
             PlayerManager.Instance.EnablePlayerActions();
             Instance.dialog.CloseDialog();
+            PlayerManager.Instance.IsInteracting = false;
         }
 
         public static void OpenShop(List<Item> items)
         {
             Instance.shop.OpenShop(items);
+        }
+
+        public static void CloseShop()
+        {
+            Instance.shop.CloseShop();
+            PlayerManager.Instance.IsInteracting = false;
         }
     }
 }

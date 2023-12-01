@@ -72,7 +72,7 @@ namespace ClothGravity.UI
             else
             {
                 priceText.gameObject.SetActive(true);
-                priceText.SetText(price);
+                priceText.SetText($"Cost: {price}g");
             }
         }
 

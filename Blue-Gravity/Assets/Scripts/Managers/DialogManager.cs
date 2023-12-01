@@ -36,7 +36,6 @@ namespace ClothGravity.UI
             PlayerInputManager.Instance.NextDialogEvent -= NextDialog;
 
             dialogGameObject.SetActive(false);
-            currentNPC = null;
             dialogIndex = 0;
             StopCoroutine(typeMessageCoroutine);
         }
@@ -52,6 +51,8 @@ namespace ClothGravity.UI
                 Debug.LogError("Player Manager is Null!");
                 return;
             }
+
+            ownerText.SetText(currentNPC.npcName);
 
             if (currentNPC.dialog.hasMet)
             {
@@ -79,6 +80,7 @@ namespace ClothGravity.UI
 
             if (isTypingMessage)
             {
+                isTypingMessage = false;
                 StopCoroutine(typeMessageCoroutine);
                 messageText.SetText(dialogMessage[dialogIndex - 1].message);
                 return;
@@ -90,12 +92,14 @@ namespace ClothGravity.UI
 
         private void FinalizeDialog()
         {
-            CloseDialog();
+            UIManager.CloseDialog();
 
             if (currentNPC.hasShop)
             {
                 UIManager.Interact(Interaction.Shop, items: currentNPC.npcShop.itemsToSell);
             }
+
+            currentNPC = null;
         }
 
         private IEnumerator TypeMessage(string message)
