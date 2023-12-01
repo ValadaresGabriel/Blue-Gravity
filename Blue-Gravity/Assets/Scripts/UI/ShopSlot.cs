@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using ClothGravity.Character;
+using ClothGravity.Inventory;
+using ClothGravity.Items;
 
 namespace ClothGravity.UI
 {
@@ -10,23 +13,24 @@ namespace ClothGravity.UI
     {
         [SerializeField] TextMeshProUGUI itemNameText;
         [SerializeField] TextMeshProUGUI itemPriceText;
-        private float itemPrice;
 
-        public void SetTitleAndPriceText(string title, string price, float itemPrice)
+        public void SetTitleAndPriceText()
         {
-            itemNameText.SetText(title);
-            itemPriceText.SetText($"{price}g");
-            this.itemPrice = itemPrice;
+            itemNameText.SetText(Item.itemName);
+            itemPriceText.SetText($"{Item.itemPrice}g");
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             // If the player has enough money -> buy, reduce money, add to inventory
-        }
+            if (PlayerManager.Instance == null) return;
 
-        public float ItemPrice
-        {
-            get => itemPrice;
+            if (PlayerManager.Instance.playerCurrency.Currency >= Item.itemPrice)
+            {
+                PlayerManager.Instance.playerCurrency.Currency -= Item.itemPrice;
+
+                InventoryManager.AddItemToItemSlot(Item);
+            }
         }
     }
 }

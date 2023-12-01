@@ -14,6 +14,7 @@ namespace ClothGravity.ShopSystem
         [SerializeField] Transform itemsGroupTransform;
         [SerializeField] GameObject shopSlotPrefab;
         [SerializeField] ScrollManager scrollManager;
+        [SerializeField] GameObject localInventory;
 
         private List<ItemSlot> itemSlots = new();
 
@@ -33,12 +34,12 @@ namespace ClothGravity.ShopSystem
             {
                 GameObject shopSlotInstance = Instantiate(shopSlotPrefab, itemsGroupTransform);
                 ShopSlot shopSlot = shopSlotInstance.GetComponent<ShopSlot>();
-                ItemSlot itemSlot = shopSlotInstance.GetComponent<ItemSlot>();
+                // ItemSlot itemSlot = shopSlotInstance.GetComponent<ItemSlot>();
 
-                itemSlot.Item = item;
-                itemSlot.SetItemIcon();
+                shopSlot.Item = item;
+                shopSlot.SetItemIcon();
 
-                shopSlot.SetTitleAndPriceText(itemSlot.Item.itemName, itemSlot.Item.itemPrice.ToString(), itemSlot.Item.itemPrice);
+                shopSlot.SetTitleAndPriceText();
             }
 
             scrollManager.RefreshScroll();

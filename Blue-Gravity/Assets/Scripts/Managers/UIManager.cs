@@ -88,6 +88,7 @@ namespace ClothGravity.UI
         {
             Instance.shop.CloseShop();
             PlayerManager.Instance.IsInteracting = false;
+            PlayerManager.Instance.IsOnShop = false;
         }
     }
 }

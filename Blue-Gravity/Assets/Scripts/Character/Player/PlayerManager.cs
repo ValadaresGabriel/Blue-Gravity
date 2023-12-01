@@ -10,6 +10,9 @@ namespace ClothGravity.Character
     {
         public static PlayerManager Instance;
 
+        public PlayerCurrency playerCurrency;
+        public PlayerEquipItem playerEquipItem;
+
         private bool isOnShop;
         private bool isOnInventory;
         private bool isInteracting = false;
@@ -20,6 +23,9 @@ namespace ClothGravity.Character
             {
                 Instance = this;
             }
+
+            playerCurrency = GetComponent<PlayerCurrency>();
+            playerEquipItem = GetComponent<PlayerEquipItem>();
 
             PlayerInputManager.Instance.OpenInventoryEvent += OpenInventory;
         }
