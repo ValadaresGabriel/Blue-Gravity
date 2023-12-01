@@ -8,6 +8,7 @@ namespace ClothGravity.Character
 {
     public class NPCInteraction : Interaction
     {
+        [SerializeField] GameObject dialogueGameObject;
         private NPC npc;
 
         private void Awake()
@@ -39,6 +40,22 @@ namespace ClothGravity.Character
             }
 
             UIManager.Interact(UI.Interaction.Dialog, npc: npc);
+        }
+
+        protected override void OnTriggerEnter2D(Collider2D other)
+        {
+            base.OnTriggerEnter2D(other);
+
+            if (other.transform.CompareTag("Player"))
+                dialogueGameObject.SetActive(true);
+        }
+
+        protected override void OnTriggerExit2D(Collider2D other)
+        {
+            base.OnTriggerExit2D(other);
+
+            if (other.transform.CompareTag("Player"))
+                dialogueGameObject.SetActive(true);
         }
     }
 }
