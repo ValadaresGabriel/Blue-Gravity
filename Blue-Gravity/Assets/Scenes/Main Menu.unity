@@ -962,6 +962,16 @@ MonoBehaviour:
   onClickCursorTexture: {fileID: 2800000, guid: 81aacd28d911072488faccbf7b6aed85, type: 3}
   onDragCursorTexture: {fileID: 2800000, guid: ddbec0f8df65c5a48b5ec7a17ba8a8bf, type: 3}
   hotSpot: {x: 0, y: 0}
+--- !u!82 &1532114058 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1169805273050154224, guid: b972b7a59df4aea42a552ffa07960f48, type: 3}
+  m_PrefabInstance: {fileID: 1169805274050789553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1532114059 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1169805273050154126, guid: b972b7a59df4aea42a552ffa07960f48, type: 3}
+  m_PrefabInstance: {fileID: 1169805274050789553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1635319664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1454,14 @@ PrefabInstance:
       propertyPath: effectsSlider
       value: 
       objectReference: {fileID: 996648990}
+    - target: {fileID: 1169805273050154227, guid: b972b7a59df4aea42a552ffa07960f48, type: 3}
+      propertyPath: musicAudioSource
+      value: 
+      objectReference: {fileID: 1532114058}
+    - target: {fileID: 1169805273050154227, guid: b972b7a59df4aea42a552ffa07960f48, type: 3}
+      propertyPath: effectsAudioSource
+      value: 
+      objectReference: {fileID: 1532114059}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b972b7a59df4aea42a552ffa07960f48, type: 3}
 --- !u!1001 &7029435220533930811

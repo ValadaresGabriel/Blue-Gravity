@@ -20,6 +20,9 @@ namespace ClothGravity.UI
                     string tooltipDescription = tooltipComponent.GetTooltipDescription();
                     string tooltipPrice = tooltipComponent.GetTooltipPrice();
 
+                    if (string.IsNullOrEmpty(tooltipTitle) && string.IsNullOrEmpty(tooltipDescription) && string.IsNullOrEmpty(tooltipPrice))
+                        return;
+
                     TooltipManager.ShowTooltip(tooltipTitle, tooltipDescription, tooltipPrice);
                 }
             }

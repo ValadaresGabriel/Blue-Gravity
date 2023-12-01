@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using ClothGravity.Inventory;
+using ClothGravity.Items;
+using ClothGravity.Shopping;
 using UnityEngine;
 
 namespace ClothGravity.UI
@@ -10,6 +12,7 @@ namespace ClothGravity.UI
         private static UIManager Instance;
 
         [SerializeField] InventoryManager inventory;
+        [SerializeField] ShopManager shop;
 
         private void Awake()
         {
@@ -22,6 +25,11 @@ namespace ClothGravity.UI
         public static void OpenInventory()
         {
             Instance.inventory.OpenInventory();
+        }
+
+        public static void OpenShop(List<Item> items)
+        {
+            Instance.shop.OpenShop(items);
         }
     }
 }

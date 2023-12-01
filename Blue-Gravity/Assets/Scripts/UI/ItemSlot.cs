@@ -9,7 +9,8 @@ namespace ClothGravity.UI
     public class ItemSlot : MonoBehaviour, ITooltip
     {
         [SerializeField] Image itemIcon;
-        public Item item;
+        private Item item;
+        private bool isEquipped;
 
         public void SetItemIcon()
         {
@@ -19,6 +20,30 @@ namespace ClothGravity.UI
             }
 
             itemIcon.sprite = item.itemIcon;
+        }
+
+        public void AddItem(Item newItem)
+        {
+            item = newItem;
+            SetItemIcon();
+        }
+
+        public void RemoveItem()
+        {
+            item = null;
+            itemIcon.enabled = false;
+        }
+
+        public Item Item
+        {
+            get => item;
+            set => item = value;
+        }
+
+        public bool IsEquipped
+        {
+            get => isEquipped;
+            set => isEquipped = value;
         }
 
         public string GetTooltipTitle()

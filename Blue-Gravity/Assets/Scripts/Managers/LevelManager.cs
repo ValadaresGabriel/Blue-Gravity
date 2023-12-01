@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ClothGravity.Audio;
 using UnityEngine;
 
 namespace ClothGravity
@@ -16,6 +17,16 @@ namespace ClothGravity
             {
                 Instance = this;
             }
+        }
+
+        private void Start()
+        {
+            PlayLevelMusic();
+        }
+
+        private void PlayLevelMusic()
+        {
+            AudioManager.Instance.PlayMusicAudio(levelMusic);
         }
     }
 }

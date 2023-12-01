@@ -34,7 +34,7 @@ namespace ClothGravity.Shopping
                 GameObject shopSlotInstance = Instantiate(shopSlotPrefab, itemsGroupTransform);
                 ItemSlot itemSlot = shopSlotInstance.GetComponent<ItemSlot>();
 
-                itemSlot.item = item;
+                itemSlot.Item = item;
                 itemSlot.SetItemIcon();
             }
 

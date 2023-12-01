@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ClothGravity.Character;
 using ClothGravity.Items;
 using ClothGravity.UI;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace ClothGravity.Inventory
 
         [SerializeField] GameObject inventoryGameObject;
         [SerializeField] Transform itemsGroupTransform;
+        [SerializeField] ItemSlot[] equippedItemsSlots;
 
         private List<ItemSlot> itemSlots = new();
 
@@ -33,10 +35,22 @@ namespace ClothGravity.Inventory
 
         public void OpenInventory()
         {
+            if (PlayerManager.Instance != null)
+            {
+                PlayerManager.Instance.IsOnInventory = true;
+            }
+            else
+            {
+                Debug.LogError("Player Manager is Null!");
+                return;
+            }
+
             inventoryGameObject.SetActive(true);
 
             foreach (ItemSlot itemSlot in itemSlots)
             {
+                if (itemSlot.Item == null) continue;
+
                 itemSlot.SetItemIcon();
             }
         }
@@ -45,9 +59,30 @@ namespace ClothGravity.Inventory
         {
             foreach (ItemSlot itemSlot in Instance.itemSlots)
             {
-                if (itemSlot.item == null)
+                if (itemSlot.Item == null)
                 {
-                    itemSlot.item = item;
+                    itemSlot.AddItem(item);
+                    return;
+                }
+            }
+
+            Debug.LogWarning("There is not free Inventory Slot, so the item cannot be added!");
+        }
+
+        public static void EquipItem(ItemSlot itemSlot)
+        {
+            if (itemSlot.Item == null)
+            {
+                Debug.LogWarning("The Item from ItemSlot is Null, so it cannot be Equipped!");
+                return;
+            }
+
+            foreach (ItemSlot equippedItemSlot in Instance.equippedItemsSlots)
+            {
+                if (equippedItemSlot.Item == null)
+                {
+                    equippedItemSlot.Item = itemSlot.Item;
+                    itemSlot.RemoveItem();
                     break;
                 }
             }

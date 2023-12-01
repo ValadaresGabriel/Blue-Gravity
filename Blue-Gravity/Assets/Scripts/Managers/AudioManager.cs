@@ -8,10 +8,14 @@ namespace ClothGravity.Audio
 {
     public class AudioManager : MonoBehaviour
     {
+        public static AudioManager Instance { get; private set; }
+
+        [Header("Audio Mixer Groups")]
         [SerializeField] AudioMixerGroup master;
         [SerializeField] AudioMixerGroup effects;
         [SerializeField] AudioMixerGroup music;
 
+        [Header("Sliders")]
         [SerializeField] Slider masterSlider;
         [SerializeField] Slider effectsSlider;
         [SerializeField] Slider musicSlider;
@@ -24,7 +28,25 @@ namespace ClothGravity.Audio
         private const string EffectsVolume = "Effects Volume";
         private const string MusicVolume = "Music Volume";
 
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
         private void Start()
+        {
+            ConfigureSliders();
+        }
+
+        private void ConfigureSliders()
         {
             master.audioMixer.GetFloat(MasterVolume, out float masterVolume);
             masterSlider.value = masterVolume;
